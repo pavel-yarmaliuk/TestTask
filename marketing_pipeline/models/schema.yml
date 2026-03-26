@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: dim_ga4__events
+    description: "Event-level table with flattened dimensions"
+    columns:
+      - name: event_timestamp
+        tests:
+          - not_null
+      - name: event_name
+        tests:
+          - not_null
+      - name: user_pseudo_id
+        tests:
+          - not_null
+  - name: fact_ga4__sessions
+    description: "Session-level aggregated table"
+    columns:
+      - name: session_id
+        tests:
+          - unique
+          - not_null
+      - name: user_pseudo_id
+        tests:
+          - not_null
